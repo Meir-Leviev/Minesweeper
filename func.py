@@ -1,7 +1,7 @@
 
 
-def create_matrix(size):
-    pass
+def create_matrix(size)->list[list]:
+    return [['' for _ in range(size)] for _ in range(size)]
 
 def place_mines(num):
     pass
