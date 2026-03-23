@@ -41,6 +41,14 @@ def place_numbers(mat_with_mines):
                 mat_with_mines[r][c] = str(mine_cnt)
     return mat_with_mines
 
+def save_score():
+    pass
+
+def open_empty_blocks():
+    pass
+
+def create_board(level):
+    pass
 
 def cover_matrix():
     pass
