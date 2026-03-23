@@ -47,8 +47,15 @@ def save_score():
 def open_empty_blocks():
     pass
 
-def create_board(level):
-    pass
+def create_board(matrix, mine_num):
+    """
+    board with no cover yet
+    just basic func for now
+    """
+
+    board_w_mines = place_mines(matrix, mine_num)
+    board = place_numbers(board_w_mines)
+    return board
 
 def cover_matrix():
     pass
