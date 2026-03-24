@@ -57,6 +57,22 @@ def create_board(matrix, mine_num):
     board = place_numbers(board_w_mines)
     return board
 
+def choose_level(level):
+    if level == 1:
+        board = create_matrix(7)
+        board_with_mines = create_board(board, 7)
+        return board_with_mines
+    elif level == 2:
+        board = create_matrix(10)
+        board_with_mines = create_board(board, 15)
+        return board_with_mines
+    elif level == 3:
+        board = create_matrix(12)
+        board_with_mines = create_board(board, 25)
+        return board_with_mines
+    else:
+        return "You must choose a level 1-3"
+
 def cover_matrix():
     pass
 
