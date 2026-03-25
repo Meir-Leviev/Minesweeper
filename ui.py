@@ -6,6 +6,17 @@ WIDTH, HEIGHT = 400, 400
 TILE_SIZE = 40
 ROWS, COLS = 10, 10
 
+NUMBER_COLORS = {
+    "1": (0, 0, 255),      # כחול
+    "2": (0, 128, 0),    # ירוק
+    "3": (255, 0, 0),    # אדום
+    "4": (0, 0, 128),    # כחול כהה
+    "5": (128, 0, 0),    # חום/אדום כהה
+    "6": (0, 128, 128),  # טורקיז
+    "7": (0, 0, 0),      # שחור
+    "8": (128, 128, 128) # אפור
+}
+
 pygame.init()
 font = pygame.font.SysFont("Arial", 32)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -21,15 +32,21 @@ def draw_grid(game_mat, revealed_mat):
                 pygame.draw.rect(screen, (200, 200, 200), rect, 1)
 #             grate logic here
                 content = str(game_matrix[r][c])
-                if content != "":
-                    text_surface = font.render(content, True, (0, 0, 0))
 
+                if content == "M":
+                    content = ''
+                    screen.blit(MINE_IMG, rect)
+
+                if content != "" and content != "0":
+                    color = NUMBER_COLORS.get(content, (0, 0, 0))
+                    text_surface = font.render(content, True, color)
                     text_rect = text_surface.get_rect(center=rect.center)
                     screen.blit(text_surface, text_rect)
-                if content == "":
+
+                if content == "" or content == "0":
                     for i in range(max(0, r - 1), min(ROWS, r + 2)):
                         for j in range(max(0, c - 1), min(COLS, c + 2)):
-                            if game_mat[i][j] == "":
+                            if game_mat[i][j] == "" or game_mat[i][j] == 0:
                                 revealed_mat[i][j] = True
 
 
@@ -49,7 +66,9 @@ place_numbers(game_matrix)
 
 # A matrix that will follow what is revealed
 revealed_matrix = [[False for _ in range(COLS)] for _ in range(ROWS)]
-
+# --- הוסף את זה אחרי ה-pygame.init() ---
+MINE_IMG = pygame.image.load("mine.png")
+MINE_IMG = pygame.transform.scale(MINE_IMG, (TILE_SIZE, TILE_SIZE))
 running = True
 while running:
     for event in pygame.event.get():
