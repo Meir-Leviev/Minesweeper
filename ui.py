@@ -7,14 +7,14 @@ TILE_SIZE = 40
 ROWS, COLS = 10, 10
 
 NUMBER_COLORS = {
-    "1": (0, 0, 255),      # כחול
-    "2": (0, 128, 0),    # ירוק
-    "3": (255, 0, 0),    # אדום
-    "4": (0, 0, 128),    # כחול כהה
-    "5": (128, 0, 0),    # חום/אדום כהה
-    "6": (0, 128, 128),  # טורקיז
-    "7": (0, 0, 0),      # שחור
-    "8": (128, 128, 128) # אפור
+    "1": (0, 0, 255),    # Blue
+    "2": (0, 128, 0),    # Green
+    "3": (255, 0, 0),    # Red
+    "4": (0, 0, 128),    # Dark Blue
+    "5": (128, 0, 0),    # Dark brown / Dark red
+    "6": (0, 128, 128),  # Turquoise
+    "7": (0, 0, 0),      # Black
+    "8": (128, 128, 128) # Grey
 }
 
 pygame.init()
@@ -66,7 +66,7 @@ place_numbers(game_matrix)
 
 # A matrix that will follow what is revealed
 revealed_matrix = [[False for _ in range(COLS)] for _ in range(ROWS)]
-# --- הוסף את זה אחרי ה-pygame.init() ---
+# --- Add this after - pygame.init() ---
 MINE_IMG = pygame.image.load("mine.png")
 MINE_IMG = pygame.transform.scale(MINE_IMG, (TILE_SIZE, TILE_SIZE))
 running = True
